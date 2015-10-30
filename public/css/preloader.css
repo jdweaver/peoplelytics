@@ -1,0 +1,70 @@
+﻿@charset "utf-8";
+body {
+
+}
+
+/* Preloader */
+#preloader {
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#111; /* change if the mask should have another color then white */
+	z-index:9999; /* makes sure it stays on top */
+}
+
+#status {
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizontally one the screen */
+	top:55%; /* centers the loading animation vertically one the screen */
+	margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
+
+
+/* -------------- loader -------------- */
+
+
+.loader{
+	position: relative;
+	height: 80px;
+	width: 80px;
+	border-radius: 80px;
+	border: 3px solid  #3498db;
+
+	top: 28%;
+	top: -webkit-calc(50% - 43px);
+	top: calc(50% - 43px);
+	left: 35%;
+	left: -webkit-calc(50% - 43px);
+	left: calc(50% - 43px);
+
+	-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+	-webkit-animation: loader 3s linear infinite;
+			animation: loader 3s linear infinite;
+}
+
+.loader:after{
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: 20px;
+	width: 11px;
+	height: 11px;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+@-webkit-keyframes loader{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes loader{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+

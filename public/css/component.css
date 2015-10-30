@@ -1,0 +1,302 @@
+/**** Isotope Filtering ****/
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+#options ul#filters {list-style:none;display:table; margin:0 auto;padding:0;}
+#options ul#filters li{position:relative;float:left;margin:0;padding:0;}
+#options ul#filters li a{width:auto;float:left;padding:12px 20px;margin:0 0 0 10px;}
+
+.grid-wrap {
+	clear: both;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1260px;
+}
+
+.grid {
+	margin: 30px auto;
+	padding: 0;
+	list-style: none;
+	min-height: 500px;
+}
+
+.js .grid {
+	background: url(../img/ajax-loader.gif) no-repeat 50% 100px;
+}
+
+.js .grid.loaded {
+	background: none;
+}
+
+.grid li {
+	display: inline-block;
+	overflow: hidden;
+	width: 314px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.grid-3 li{width: 414px;}
+
+.js .grid li {
+	display: none;
+	float: left;
+}
+
+.js .grid.loaded li {
+	display: block;
+}
+
+
+/* Anchor and image */
+.grid li > a,
+.grid li img {
+	display: block;
+	outline: none;
+	border: none;
+}
+
+.grid li > a {
+	position: relative;
+	overflow: hidden;
+	margin: 7px;
+}
+
+/* Curtain element */
+.grid .curtain {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background: #96cdc8;
+}
+
+.grid.swipe-right .curtain {
+	-webkit-transform: translate3d(-100%,0,0);
+	transform: translate3d(-100%,0,0);
+}
+
+.grid.swipe-down .curtain {
+	-webkit-transform: translate3d(0,-100%,0);
+	transform: translate3d(0,-100%,0);
+}
+
+.grid.swipe-rotate .curtain {
+	width: 200%;
+	height: 200%;
+	-webkit-transform: rotate3d(0,0,1,90deg);
+	transform: rotate3d(0,0,1,90deg);
+	-webkit-transform-origin: top left;
+	transform-origin: top left;
+}
+
+/* Shadow */
+.grid .curtain::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,1);
+	content: '';
+}
+
+.grid.swipe-right .curtain::after,
+.grid.swipe-rotate .curtain::after {
+	left: -100%;
+}
+
+.grid.swipe-down .curtain::after {
+	top: -100%;
+}
+
+/* Title */
+.grid li h3 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 20px;
+	width: 100%;
+	background: #019CDE;
+	color: #FFFFFF;
+	text-align: right;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 800;
+	font-size: 1em;
+	-webkit-transition: -webkit-transform 0.2s, color 0.2s;
+	transition: transform 0.2s, color 0.2s;
+}
+
+/* Pseudo element for hover effect */
+.grid li > a::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100.5%;
+	height: 100.5%;
+	border: 0px solid transparent;
+	background: rgba(0,0,0,0);
+	content: '';
+	-webkit-transition: border-width 0.2s, border-color 0.2s;
+	transition: border-width 0.2s, border-color 0.2s;
+}
+
+/* Hover effects */
+.grid li.shown:hover h3 {
+	color: #fff;
+	-webkit-transform: translate3d(0,-30px,0);
+	transform: translate3d(0,-30px,0);
+}
+
+.grid li.shown:hover > a::before {
+	border-width: 14px;
+	border-color: #019CDE;
+}
+
+/* Animations */
+
+/* Swipe right */
+.grid.swipe-right li.animate .curtain {
+	-webkit-animation: swipeRight 1.5s cubic-bezier(0.6,0,0.4,1) forwards;
+	animation: swipeRight 1.5s cubic-bezier(0.6,0,0.4,1) forwards;
+}
+
+@-webkit-keyframes swipeRight {
+	50%, 60% { -webkit-transform: translate3d(0,0,0); }
+	100% { -webkit-transform: translate3d(100%,0,0); }
+}
+
+@keyframes swipeRight {
+	50%, 60% { transform: translate(0); }
+	100% { transform: translate3d(100%,0,0); }
+}
+
+/* Swipe down */
+.grid.swipe-down li.animate .curtain {
+	-webkit-animation: swipeDown 1.5s cubic-bezier(0.6,0,0.4,1) forwards;
+	animation: swipeDown 1.5s cubic-bezier(0.6,0,0.4,1) forwards;
+}
+
+@-webkit-keyframes swipeDown {
+	50%, 60% { -webkit-transform: translate3d(0,0,0); }
+	100% { -webkit-transform: translate3d(0,100%,0); }
+}
+
+@keyframes swipeDown {
+	50%, 60% { transform: translate(0); }
+	100% { transform: translate3d(0,100%,0); }
+}
+
+/* Swipe rotate */
+.grid.swipe-rotate li.animate .curtain {
+	-webkit-animation: swipeRotate 1.5s ease forwards;
+	animation: swipeRotate 1.5s ease forwards;
+}
+
+@-webkit-keyframes swipeRotate {
+	50%, 60% { -webkit-transform: rotate3d(0,0,1,0deg); }
+	100% { -webkit-transform: rotate3d(0,0,1,-90deg); }
+}
+
+@keyframes swipeRotate {
+	50%, 60% { transform: rotate3d(0,0,1,0deg); }
+	100% { transform: rotate3d(0,0,1,-90deg); }
+}
+
+/* Shadow */
+.grid li.animate .curtain::after {
+	-webkit-animation: fadeOut 1.5s ease forwards;
+	animation: fadeOut 1.5s ease forwards;
+	-webkit-animation-delay: inherit;
+	animation-delay: inherit;
+}
+
+@-webkit-keyframes fadeOut {
+	50%, 60% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+	50%, 60% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+/* Hide image and title and show at half time */
+.js .grid li img,
+.js .grid li h3 {
+	visibility: hidden;
+}
+
+.grid li.animate img,
+.grid li.animate h3 {
+	-webkit-animation: showMe 1.5s step-end forwards;
+	animation: showMe 1.5s step-end forwards;
+}
+
+@-webkit-keyframes showMe {
+	from { visibility: hidden; }
+	60%, 100% { visibility: visible; }
+}
+
+@keyframes showMe {
+	from { visibility: hidden; }
+	60%, 100% { visibility: visible; }
+}
+
+.grid li.shown img,
+.grid li.shown h3 {
+	visibility: visible;
+}
+
+
